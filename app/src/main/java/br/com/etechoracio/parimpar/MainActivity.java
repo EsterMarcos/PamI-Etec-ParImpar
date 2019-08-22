@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtNumero;
@@ -14,16 +15,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtNumero=findViewById(R.id.txtNumero);
-        lblResultado2=findViewById(R.id.lblResultado2);
+        txtNumero = findViewById(R.id.txtNumero);
+        lblResultado2 = findViewById(R.id.lblResultado2);
+
     }
-    public void  onProcessar (View v){
-        int numero = Integer.parseInt(txtNumero.getText().toString());
-        if (numero%2==0)
-        {
-         lblResultado2.setText("Par");
+
+    public void onProcessar(View v) {
+
+
+        if (txtNumero.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Digite o valor", Toast.LENGTH_LONG).show();
         } else {
-            lblResultado2.setText("Ímpar");
+
+
+            int numero = Integer.parseInt(txtNumero.getText().toString());
+            if (numero % 2 == 0) {
+                lblResultado2.setText("Par");
+            } else {
+                lblResultado2.setText("Ímpar");
+            }
         }
     }
 
